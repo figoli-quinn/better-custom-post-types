@@ -1,0 +1,9 @@
+{
+    "name": "figoli-quinn/better-custom-post-types",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "FigoliQuinn\\BetterCustomPostTypes\\": "src"
+        }
+    }
+}
