@@ -93,22 +93,7 @@ class BetterCustomPostType
         add_action( 'manage_edit-' . $this->slug . '_columns', [ $this, 'custom_admin_column_headers' ] );
         add_action( 'manage_' . $this->slug . '_posts_custom_column', [ $this, 'custom_admin_column_value' ], 10, 2 );
         add_action( 'save_post', [ $this, 'save_post' ], 10, 1 );
-        if ( $this->no_singles ) {
-			add_action( 'template_redirect', [ $this, 'disable_single_views' ] );
-		}
     }
-
-    /**
-     * If we want to have an archive view, but not allow singles to be viewable, WP doesn't have an out-of-the-box way to do that. So we just can redirect any requests to get the single post view if it's this post type.
-     *
-     */
-    protected function disable_single_views()
-	{
-		if ( is_single() && $this->slug == get_query_var( 'post_type' ) ) {
-			wp_redirect( home_url( '/' . get_query_var( 'post_type' ) . '/' ), 301 );
-			exit;
-		}
-	}
 
     protected function pluralize( string $text ): string
     {
